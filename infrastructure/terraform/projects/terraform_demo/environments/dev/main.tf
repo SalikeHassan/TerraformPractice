@@ -58,3 +58,17 @@ module "blob_container" {
 
   depends_on = [module.storage_account]
 }
+
+module "service_plan" {
+  source   = "../../../../modules/service_plan"
+  for_each = toset(var.locations)
+
+  service_plan_name   = "${var.project_name}-asp-${var.environment}-${replace(lower(each.value), " ", "")}"
+  resource_group_name = module.resource_group[each.key].name
+  location            = each.value
+  os_type             = var.service_plan_os_type
+  sku_name            = var.service_plan_sku_name
+  tags                = local.common_tags
+
+  depends_on = [module.resource_group]
+}

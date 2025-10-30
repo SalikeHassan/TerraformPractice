@@ -22,3 +22,7 @@ blob_containers = {
     container_access_type = "private"
   }
 }
+
+# App Service Plan
+service_plan_os_type  = "Windows"
+service_plan_sku_name = "F1"

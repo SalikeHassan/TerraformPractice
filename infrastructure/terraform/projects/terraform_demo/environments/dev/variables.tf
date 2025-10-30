@@ -60,3 +60,25 @@ variable "blob_containers" {
     container_access_type = string
   }))
 }
+
+variable "service_plan_os_type" {
+  description = "App service plan OS type"
+  type        = string
+  default     = "Windows"
+}
+
+variable "service_plan_sku_name" {
+  description = "App service plan SKU"
+  type        = string
+  default     = "Y1"  # Consumption plan
+}
+
+output "service_plan_ids" {
+  description = "Service plan IDs"
+  value       = { for k, v in module.service_plan : k => v.service_plan_id }
+}
+
+output "service_plan_names" {
+  description = "Service plan names"
+  value       = { for k, v in module.service_plan : k => v.service_plan_name }
+}
