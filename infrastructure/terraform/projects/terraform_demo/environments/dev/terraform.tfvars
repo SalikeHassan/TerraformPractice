@@ -18,7 +18,7 @@ public_network_access_enabled = true
 
 # Blob Containers
 blob_containers = {
-  "terraform-demo-container" = {
+  "demo" = {
     container_access_type = "private"
   }
 }

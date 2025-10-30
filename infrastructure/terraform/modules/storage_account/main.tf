@@ -10,11 +10,3 @@ resource "azurerm_storage_account" "this" {
   min_tls_version                 = var.min_tls_version
   public_network_access_enabled   = var.public_network_access_enabled
 }
-
-resource "azurerm_storage_container" "containers" {
-  for_each = var.containers
-  
-  name                  = each.key
-  storage_account_id    = azurerm_storage_account.this.id
-  container_access_type = each.value.container_access_type
-}

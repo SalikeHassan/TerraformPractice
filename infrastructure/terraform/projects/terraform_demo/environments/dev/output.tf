@@ -29,6 +29,6 @@ output "primary_blob_endpoints" {
 }
 
 output "container_names" {
-  description = "Container names per storage account"
-  value       = { for k, v in module.storage_account : k => v.container_names }
+  description = "Container names"
+  value       = [for k, v in module.blob_container : k]
 }

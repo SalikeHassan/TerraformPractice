@@ -2,10 +2,10 @@ variable "storage_account_name" {
   description = "Storage account name"
   type        = string
 
-  validation {
-    condition = can(regex("^[a-z0-9]{3,24}$", var.storage_account_name))
-    error_message = "Storage account name must be 3-24 characters, lowercase letters and numbers only."
-  }
+  # validation {
+  #   condition     = can(regex("^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]$", var.storage_account_name))
+  #   error_message = "Storage account name must be 3-24 characters, lowercase letters and numbers only."
+  # }
 }
 
 variable "resource_group_name" {
@@ -66,13 +66,6 @@ variable "min_tls_version" {
 variable "public_network_access_enabled" {
   description = "Enable public network access"
   type        = bool
-}
-
-variable "containers" {
-  description = "List of blob containers to create"
-  type = map(object({
-    container_access_type = string
-  }))
 }
 
 variable "tags" {

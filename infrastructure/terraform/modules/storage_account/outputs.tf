@@ -18,8 +18,3 @@ output "primary_access_key" {
   value       = azurerm_storage_account.this.primary_access_key
   sensitive   = true
 }
-
-output "container_names" {
-  description = "Container names"
-  value       = [for c in azurerm_storage_container.containers : c.name]
-}
